@@ -30,7 +30,7 @@ public class MemberService {
     @Transactional
     public Long createMember(MemberCreateDto memberCreateDto) {
         Member member = Member.builder()
-                .name(memberCreateDto.getUsername())
+                .username(memberCreateDto.getUsername())
                 .email(memberCreateDto.getEmail())
                 .password(memberCreateDto.getPassword())
                 .build();

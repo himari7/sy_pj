@@ -1,14 +1,10 @@
 package com.ll.maybeMap.domain.member.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.*;
-
-import java.time.LocalDate;
-
-import static lombok.AccessLevel.PROTECTED;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @NoArgsConstructor
@@ -20,15 +16,11 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
-
-    private String email;
+    @Column(unique = true)
+    private String username;
 
     private String password;
 
-    private String profile;
-
-    private String phone;
-
-    private LocalDate birthday;
+    @Column(unique = true)
+    private String email;
 }

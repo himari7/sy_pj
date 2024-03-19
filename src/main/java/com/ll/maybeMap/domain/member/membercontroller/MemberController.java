@@ -23,8 +23,8 @@ public class MemberController {
     }
 
     @PostMapping("/members/new")
-    public String create(MemberCreateDto form) {
-        memberService.createMember(form);
+    public String create(MemberCreateDto memberForm) {
+        memberService.createMember(memberForm);
         return "redirect:/";
     }
 }

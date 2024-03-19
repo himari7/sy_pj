@@ -16,4 +16,4 @@ spring:
         dialect: org.hibernate.dialect.H2Dialect
         show_sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
