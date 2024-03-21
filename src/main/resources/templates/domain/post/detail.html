@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html layout:decorate="~{/domain/layout/layout}">
+<div layout:fragment="content" class="container my-3">
 <head>
     <meta charset="UTF-8">
     <title>게시물 상세</title>
@@ -11,5 +12,16 @@
     <p th:text="${post.content}">내용</p>
     <p th:text="${post.author}">작성자</p>
 </div>
+<h5 th:text="|${#lists.size(post.answerList)}개의 답변이 있습니다.|"></h5>
+<div>
+    <ul>
+        <li th:each="answer : ${post.answerList}" th:text="${answer.content}"></li>
+    </ul>
+</div>
+<form th:href="@{/posts/{postId}(postId=${post.id})}" method="post">
+    <textarea name="content" id="content" rows="15"></textarea>
+    <input type="submit" value="답변등록">
+</form>
 </body>
+</div>
 </html>

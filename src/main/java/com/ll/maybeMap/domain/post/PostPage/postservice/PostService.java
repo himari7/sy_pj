@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Transactional
 @Service
@@ -33,14 +32,17 @@ public class PostService {
     public Post getPost(Long id) {
         return postRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 게시글을 찾을 수 없습니다. id=" + id));
     }
-    public List<PostDto> getAllPosts() {
-        return postRepository.findAll().stream().map(post ->
-                PostDto.builder()
-                        .title(post.getTitle())
-                        .content(post.getContent())
-                        .author(post.getAuthor())
-                        .build()
-        ).collect(Collectors.toList());
+    public List<Post> getAllPosts() {
+//        return postRepository.findAll().stream().map(post ->
+//                PostDto.builder()
+//                        .title(post.getTitle())
+//                        .content(post.getContent())
+//                        .author(post.getAuthor())
+//                        .build()
+//        ).collect(Collectors.toList());
+        return postRepository.findAll();
     }
+
+
 }
 
